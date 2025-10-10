@@ -1,4 +1,4 @@
-                # RoleSC - Projeto Web2
+# RoleSC - Projeto Web2
 
 ## Estrutura do Projeto
 
@@ -11,19 +11,31 @@ projeto_entrega_1/
 ├── css/                          # Estilos CSS
 │   ├── base.css                  # Estilos base e variáveis globais
 │   ├── auth.css                  # Estilos para páginas de autenticação
-│   ├── index.css                 # Estilos específicos da página inicial
+│   ├── header.css                # Estilos do cabeçalho
+│   ├── index.css                 # Estilos da página inicial
 │   ├── calendario.css            # Estilos da página do calendário
 │   ├── mapa.css                  # Estilos da página do mapa
 │   ├── adicionar-evento.css      # Estilos da página de adicionar evento
-│   └── detalhes.css              # Estilos da página de detalhes
+│   └── detalhes.css              # Estilos da página de detalhes do evento
+│
 ├── js/                           # Scripts JavaScript
 │   ├── common.js                 # Funcionalidades compartilhadas
 │   ├── index.js                  # Scripts da página inicial
 │   ├── calendario.js             # Scripts do calendário
-│   └── mapa.js                   # Scripts do mapa
-├── assets/                       # Recursos estáticos
-│   └── images/                   # Imagens do projeto
-└── *.html                        # Páginas HTML na raiz
+│   ├── mapa.js                   # Scripts do mapa
+│   └── detalhes.js               # Scripts da página de detalhes
+│
+├── pages/                        # Páginas HTML
+│   ├── index.html
+│   ├── detalhes.html
+│   ├── calendario.html
+│   ├── mapa.html
+│   ├── adicionar-evento.html
+│   ├── login.html
+│   ├── cadastro.html
+│   └── esqueci-senha.html
+│
+└── README.md                     # Documentação do projeto
 ```
 
 ### 🎨 Organização do CSS
