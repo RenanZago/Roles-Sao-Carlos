@@ -1,4 +1,4 @@
-                # RoleSC - Projeto Web2
+# RoleSC - Projeto Web2
 
 ## Estrutura do Projeto
 
