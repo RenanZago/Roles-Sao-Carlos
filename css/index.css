@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; /* Centraliza o conteúdo */
+  align-items: center;
 }
 
 .hero-section h1 {
@@ -27,7 +27,7 @@
 }
 
 .hero-section p {
-  width: 70%; /* Largura definida */
+  width: 70%;
   margin: 0 auto;
   text-align: center;
   font-size: 1.1rem;
@@ -110,7 +110,7 @@
   margin-bottom: 40px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  text-align: center; /* LINHA ADICIONADA PARA CENTRALIZAR */
+  text-align: center;
 }
 
 .filter-container-wrapper::-webkit-scrollbar {

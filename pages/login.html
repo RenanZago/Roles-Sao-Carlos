@@ -105,6 +105,11 @@
           }
         });
       });
+      const aForm = document.querySelector("form");
+      aForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        window.location.href = "index.html";
+      });
     </script>
   </body>
 </html>
