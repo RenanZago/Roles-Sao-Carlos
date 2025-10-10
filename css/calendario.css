@@ -90,6 +90,8 @@ body {
 
 .fc .fc-event {
   font-size: 0.75rem;
+  color: var(--cor-texto-principal); 
+  text-decoration: none;
 }
 
 .fc .fc-toolbar.fc-header-toolbar {
