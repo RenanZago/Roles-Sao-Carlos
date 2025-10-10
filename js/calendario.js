@@ -1,7 +1,4 @@
-// --- FUNCIONALIDADES ESPECÍFICAS DA PÁGINA DO CALENDÁRIO ---
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Inicializar o calendário
   initCalendar();
 });
 
@@ -90,7 +87,7 @@ function initCalendar() {
         url: "detalhes.html?id=8",
       },
     ],
-    eventClick: function(info) {
+    eventClick: function (info) {
       if (info.event.url) {
         info.jsEvent.preventDefault();
         window.location.href = info.event.url;
@@ -112,12 +109,13 @@ function showEventPopover(info, popover) {
 
   const popoverTitle = document.getElementById("popover-title");
   const popoverTime = document.getElementById("popover-time");
-  
+
   if (popoverTitle) {
     popoverTitle.textContent = info.event.title;
-    popoverTitle.style.color = info.event.backgroundColor || "var(--cor-primaria)";
+    popoverTitle.style.color =
+      info.event.backgroundColor || "var(--cor-primaria)";
   }
-  
+
   if (popoverTime) {
     popoverTime.textContent = info.event.allDay
       ? "O dia todo"
@@ -128,16 +126,20 @@ function showEventPopover(info, popover) {
   }
 
   popover.classList.add("visible");
-  
+
   const eventRect = info.el.getBoundingClientRect();
   let top = eventRect.top + window.scrollY - popover.offsetHeight - 10;
-  
+
   if (top < window.scrollY) {
     top = eventRect.bottom + window.scrollY + 10;
   }
 
-  let left = eventRect.left + window.scrollX + eventRect.width / 2 - popover.offsetWidth / 2;
-  
+  let left =
+    eventRect.left +
+    window.scrollX +
+    eventRect.width / 2 -
+    popover.offsetWidth / 2;
+
   if (left < 10) left = 10;
   if (left + popover.offsetWidth > window.innerWidth - 10) {
     left = window.innerWidth - popover.offsetWidth - 10;
@@ -152,4 +154,3 @@ function hideEventPopover(popover) {
     popover.classList.remove("visible");
   }
 }
-

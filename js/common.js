@@ -1,11 +1,7 @@
-// --- FUNCIONALIDADES COMPARTILHADAS ---
-
-// Configuração de autenticação
 const AuthConfig = {
-  isLoggedIn: false
+  isLoggedIn: false,
 };
 
-// Gerenciamento do header
 class HeaderManager {
   constructor() {
     this.header = document.getElementById("main-header");
@@ -13,7 +9,7 @@ class HeaderManager {
     this.navMenu = document.getElementById("main-nav");
     this.mobileAuthContainer = document.getElementById("nav-auth-links-mobile");
     this.desktopAuthContainer = document.getElementById("desktop-auth-section");
-    
+
     this.init();
   }
 
@@ -50,11 +46,11 @@ class HeaderManager {
 
   setLoggedInLinks() {
     const addEventLink = `<a href="adicionar-evento.html">Adicionar</a>`;
-    
+
     if (this.mobileAuthContainer) {
       this.mobileAuthContainer.innerHTML = `<li class="nav-action-button">${addEventLink}</li>`;
     }
-    
+
     if (this.desktopAuthContainer) {
       this.desktopAuthContainer.innerHTML = `<li class="nav-action-button">${addEventLink}</li>`;
     }
@@ -65,7 +61,7 @@ class HeaderManager {
       <a href="login.html">Login</a>
       <a href="cadastro.html" class="nav-register-link">Cadastro</a>
     `;
-    
+
     const desktopLinks = `
       <div class="auth-dropdown">
         <button class="drop-button">Entrar</button>
@@ -75,18 +71,17 @@ class HeaderManager {
         </div>
       </div>
     `;
-    
+
     if (this.mobileAuthContainer) {
       this.mobileAuthContainer.innerHTML = mobileLinks;
     }
-    
+
     if (this.desktopAuthContainer) {
       this.desktopAuthContainer.innerHTML = desktopLinks;
     }
   }
 }
 
-// Gerenciamento de filtros
 class FilterManager {
   constructor() {
     this.filterLinks = document.querySelectorAll(".filter-list a");
@@ -112,23 +107,22 @@ class FilterManager {
 
   moveBackground(link) {
     if (!link) return;
-    
+
     this.filterLinks.forEach((l) => l.classList.remove("active"));
     link.classList.add("active");
-    
+
     this.activeBg.style.width = `${link.offsetWidth}px`;
     this.activeBg.style.left = `${link.offsetLeft}px`;
     this.activeBg.style.backgroundColor = link.dataset.color;
   }
 }
 
-// Gerenciamento de modais
 class ModalManager {
   constructor(modalId) {
     this.modal = document.getElementById(modalId);
     this.openButton = document.getElementById(`open-${modalId}`);
     this.closeButton = document.getElementById(`close-${modalId}`);
-    
+
     if (this.modal) {
       this.init();
     }
@@ -142,11 +136,11 @@ class ModalManager {
     if (this.openButton) {
       this.openButton.addEventListener("click", () => this.openModal());
     }
-    
+
     if (this.closeButton) {
       this.closeButton.addEventListener("click", () => this.closeModal());
     }
-    
+
     if (this.modal) {
       this.modal.addEventListener("click", (e) => {
         if (e.target === this.modal) {
@@ -165,13 +159,12 @@ class ModalManager {
   }
 }
 
-// Efeito de digitação
 class TypingEffect {
   constructor(elementId, text, speed = 70) {
     this.element = document.getElementById(elementId);
     this.text = text;
     this.speed = speed;
-    
+
     if (this.element) {
       this.init();
     }
@@ -184,7 +177,8 @@ class TypingEffect {
         this.element.textContent += this.text.charAt(charIndex++);
         setTimeout(type, this.speed);
       } else {
-        const cursor = this.element.parentElement.querySelector(".typing-cursor");
+        const cursor =
+          this.element.parentElement.querySelector(".typing-cursor");
         if (cursor) {
           cursor.style.display = "none";
         }
@@ -194,10 +188,7 @@ class TypingEffect {
   }
 }
 
-// Inicialização quando o DOM estiver carregado
 document.addEventListener("DOMContentLoaded", () => {
-  // Inicializar gerenciadores comuns
   new HeaderManager();
   new FilterManager();
 });
-

@@ -1,37 +1,86 @@
-// --- FUNCIONALIDADES ESPECÍFICAS DA PÁGINA DO MAPA ---
-
 document.addEventListener("DOMContentLoaded", function () {
   initMap();
 });
 
 function initMap() {
-  // Coordenadas do centro de São Carlos
   const saoCarlosCenter = [-22.0177, -47.8913];
-
-  // Inicializa o mapa
   const map = L.map("map").setView(saoCarlosCenter, 14);
 
-  // Adiciona a camada de mapa (tiles)
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(map);
 
-  // Criação dos ícones coloridos
   const icons = createMapIcons();
-
   let userLocation = null;
 
-  // Botão customizado para voltar à localização do usuário
-  const locateControl = createLocateControl(map, userLocation);
+  const locateControl = createLocateControl();
   map.addControl(locateControl);
 
-  // Lógica de geolocalização
-  setupGeolocation(map, userLocation, locateControl);
-
-  // Adiciona marcadores dos eventos
+  setupGeolocation();
   addEventMarkers(map, icons);
+
+  function createLocateControl() {
+    const LocateControl = L.Control.extend({
+      options: {
+        position: "topleft",
+      },
+      onAdd: function (map) {
+        const container = L.DomUtil.create(
+          "div",
+          "leaflet-bar leaflet-control leaflet-control-locate"
+        );
+        const link = L.DomUtil.create("a", "", container);
+        link.href = "#";
+        link.title = "Voltar para minha localização";
+        container.style.display = "none";
+
+        L.DomEvent.on(link, "click", function (ev) {
+          L.DomEvent.stopPropagation(ev);
+          L.DomEvent.preventDefault(ev);
+          if (userLocation) {
+            map.flyTo(userLocation, 15);
+          }
+        });
+        return container;
+      },
+    });
+
+    return new LocateControl();
+  }
+
+  function setupGeolocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          userLocation = [lat, lon];
+
+          document.querySelector(".leaflet-control-locate").style.display =
+            "block";
+
+          L.circleMarker(userLocation, {
+            radius: 8,
+            fillColor: "#3388ff",
+            color: "#fff",
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.9,
+          })
+            .addTo(map)
+            .bindPopup("<b>Você está aqui!</b>")
+            .openPopup();
+
+          map.setView(userLocation, 15);
+        },
+        () => {
+          console.log("Não foi possível obter a sua localização.");
+        }
+      );
+    }
+  }
 }
 
 function createMapIcons() {
@@ -87,70 +136,6 @@ function createMapIcons() {
       shadowSize: [41, 41],
     }),
   };
-}
-
-function createLocateControl(map, userLocation) {
-  const LocateControl = L.Control.extend({
-    options: {
-      position: "topleft",
-    },
-    onAdd: function (map) {
-      const container = L.DomUtil.create(
-        "div",
-        "leaflet-bar leaflet-control leaflet-control-locate"
-      );
-      const link = L.DomUtil.create("a", "", container);
-      link.href = "#";
-      link.title = "Voltar para minha localização";
-
-      container.style.display = "none";
-
-      L.DomEvent.on(link, "click", function (ev) {
-        L.DomEvent.stopPropagation(ev);
-        L.DomEvent.preventDefault(ev);
-        if (userLocation) {
-          map.flyTo(userLocation, 15);
-        }
-      });
-      return container;
-    },
-  });
-
-  return new LocateControl();
-}
-
-function setupGeolocation(map, userLocation, locateControl) {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        userLocation = [lat, lon];
-
-        // Mostra o botão de localização
-        document.querySelector(".leaflet-control-locate").style.display = "block";
-
-        // Adiciona um círculo azul no mapa para indicar a posição do usuário
-        L.circleMarker(userLocation, {
-          radius: 8,
-          fillColor: "#3388ff",
-          color: "#fff",
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.9,
-        })
-          .addTo(map)
-          .bindPopup("<b>Você está aqui!</b>")
-          .openPopup();
-
-        // Centraliza o mapa na localização do usuário
-        map.setView(userLocation, 15);
-      },
-      () => {
-        console.log("Não foi possível obter a sua localização.");
-      }
-    );
-  }
 }
 
 function addEventMarkers(map, icons) {
@@ -239,4 +224,3 @@ function addEventMarkers(map, icons) {
     marker.bindPopup(popupContent);
   });
 }
-

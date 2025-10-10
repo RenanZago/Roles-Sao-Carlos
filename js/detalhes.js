@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- DADOS DOS EVENTOS (SIMULAÇÃO) ---
   const eventos = [
     {
-      // Evento Gratuito
       id: 1,
       title: "Show de Calouros no CAASO",
       date: "2025-11-12T19:00:00.000Z",
@@ -23,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ageRating: "Livre",
     },
     {
-      // Evento Pago
       id: 2,
       title: "Festa da Bateria",
       date: "2025-10-28T22:00:00.000Z",
@@ -44,10 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ageRating: "Maiores de 18 anos",
     },
   ];
-  // --- LÓGICA PARA VARIAR ENTRE OS EVENTOS ---
-  // Sorteia um dos eventos da lista para exibir
   const eventData = eventos[Math.floor(Math.random() * eventos.length)];
-  // --- PREENCHIMENTO DINÂMICO DA PÁGINA ---
   const startDate = new Date(eventData.date);
   const endDate = new Date(
     startDate.getTime() + eventData.durationHours * 60 * 60 * 1000
@@ -66,11 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById(
     "event-hero-image"
   ).style.backgroundImage = `url('${eventData.imageUrl}')`;
-  document.getElementById("event-category").textContent =
-    eventData.category;
+  document.getElementById("event-category").textContent = eventData.category;
   document.getElementById("event-title").textContent = eventData.title;
-  document.getElementById("event-date").textContent =
-    new Intl.DateTimeFormat("pt-BR", dateOptions).format(startDate);
+  document.getElementById("event-date").textContent = new Intl.DateTimeFormat(
+    "pt-BR",
+    dateOptions
+  ).format(startDate);
   document.getElementById(
     "event-time"
   ).textContent = `${startDate.toLocaleTimeString(
@@ -81,10 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
     eventData.location.name;
   document.getElementById("event-description").textContent =
     eventData.description;
-  document.getElementById("event-organizer").textContent =
-    eventData.organizer;
-  document.getElementById("event-age-rating").textContent =
-    eventData.ageRating;
+  document.getElementById("event-organizer").textContent = eventData.organizer;
+  document.getElementById("event-age-rating").textContent = eventData.ageRating;
   document.getElementById(
     "event-map"
   ).src = `https://maps.google.com/maps?q=-22.0028,-47.8931&hl=pt-BR&z=15&output=embed`;
@@ -106,4 +99,3 @@ document.addEventListener("DOMContentLoaded", () => {
     ).textContent = `Online via ${eventData.ticketPlatform}`;
   }
 });
-
