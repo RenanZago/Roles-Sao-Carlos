@@ -18,6 +18,8 @@
 
 .typing-cursor {
   animation: blink 0.7s infinite;
+  color: var(--cor-primaria);
+  font-weight: 100;
 }
 
 @keyframes blink {
