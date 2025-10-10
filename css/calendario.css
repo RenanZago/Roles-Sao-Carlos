@@ -1,0 +1,167 @@
+/* --- PÁGINA DO CALENDÁRIO --- */
+
+:root {
+  --fc-border-color: var(--cor-bordas);
+  --fc-today-bg-color: #fef4f2;
+}
+
+body {
+  background-color: var(--cor-fundo-secao);
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.main-content {
+  padding-top: calc(var(--header-height) + 40px);
+  padding-bottom: 60px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 32px;
+  color: var(--cor-texto-principal);
+}
+
+/* --- CALENDÁRIO --- */
+#calendar {
+  background-color: var(--cor-fundo);
+  padding: 10px;
+  border-radius: 16px;
+  border: 1px solid var(--cor-bordas);
+}
+
+/* CUSTOMIZAÇÃO DO FULLCALENDAR */
+.fc .fc-button {
+  background-color: var(--cor-fundo);
+  border: 1px solid var(--cor-bordas);
+  color: var(--cor-texto-secundario);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+.fc .fc-button:hover {
+  background-color: #e9ecef;
+  color: var(--cor-texto-principal);
+}
+
+.fc .fc-button:focus,
+.fc .fc-button:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  color: white;
+}
+
+.fc .fc-toolbar-title {
+  color: var(--cor-texto-principal);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1rem;
+  white-space: normal;
+}
+
+.fc .fc-today-button {
+  background-color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  color: white;
+}
+
+.fc .fc-today-button:hover {
+  background-color: #d65645;
+  border-color: #d65645;
+}
+
+.fc .fc-daygrid-day-number {
+  font-size: 0.75rem;
+}
+
+.fc .fc-col-header-cell-cushion {
+  font-size: 0.8rem;
+  padding: 5px 2px;
+}
+
+.fc .fc-event {
+  font-size: 0.75rem;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  flex-wrap: wrap;
+}
+
+.fc .fc-toolbar-chunk {
+  margin-bottom: 5px;
+}
+
+/* --- POPOVER --- */
+#event-popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--cor-fundo);
+  padding: 16px;
+  border-radius: 8px;
+  width: 280px;
+  max-width: 90vw;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(10px);
+}
+
+#event-popover.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#event-popover h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+#event-popover p {
+  font-size: 0.875rem;
+  color: var(--cor-texto-secundario);
+  margin: 0;
+}
+
+/* --- MEDIA QUERIES PARA TABLET E DESKTOP --- */
+@media (min-width: 768px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+  
+  #calendar {
+    padding: 25px;
+  }
+  
+  .fc .fc-toolbar-title {
+    font-size: 1.5rem;
+  }
+  
+  .fc .fc-button {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .fc .fc-daygrid-day-number,
+  .fc .fc-col-header-cell-cushion {
+    font-size: 1rem;
+  }
+  
+  .fc .fc-toolbar.fc-header-toolbar {
+    flex-wrap: nowrap;
+  }
+}
+

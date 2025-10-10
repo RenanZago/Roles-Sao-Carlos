@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adicionar Evento - RoleSC</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/adicionar-evento.css">
+    <link rel="stylesheet" href="../css/header.css">
+  </head>
+  <body>
+    <header class="main-header" id="main-header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">RoleSC</a>
+        <div class="hamburger-menu" id="hamburger-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <nav class="main-nav" id="main-nav">
+          <ul>
+            <li><a href="index.html">Feed</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li class="nav-auth-links-mobile" id="nav-auth-links-mobile"></li>
+          </ul>
+        </nav>
+        <nav class="nav-desktop">
+          <ul>
+            <li><a href="index.html">Feed</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li id="desktop-auth-section"></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container">
+        <h1 class="page-title">Adicionar Novo Evento</h1>
+        <div class="form-container">
+          <form action="#" method="POST">
+            <div class="form-section">
+              <h2>Sobre o Evento</h2>
+              <div class="form-group">
+                <label for="title">Título do Evento</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="Ex: Festa da Bateria"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="description">Descrição</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  placeholder="Conte mais sobre o seu evento..."
+                  required
+                ></textarea>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="date">Data e Hora de Início</label>
+                  <input type="datetime-local" id="date" name="date" required />
+                </div>
+                <div class="form-group">
+                  <label for="duration">Duração (em horas)</label>
+                  <input
+                    type="number"
+                    id="duration"
+                    name="duration"
+                    placeholder="Ex: 6"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="category">Categoria</label>
+                  <select id="category" name="category" required>
+                    <option value="" disabled selected>
+                      Selecione uma categoria
+                    </option>
+                    <option value="festa">Festa</option>
+                    <option value="academico">Acadêmico</option>
+                    <option value="cultural">Cultural</option>
+                    <option value="esporte">Esporte</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="imageUrl">URL da Imagem do Evento</label>
+                  <input
+                    type="url"
+                    id="imageUrl"
+                    name="imageUrl"
+                    placeholder="https://..."
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <hr class="form-divider" />
+
+            <div class="form-section">
+              <h2>Localização</h2>
+              <div class="form-group">
+                <label for="locationName">Nome do Local</label>
+                <input
+                  type="text"
+                  id="locationName"
+                  name="locationName"
+                  placeholder="Ex: Em frente ao ginásio"
+                  required
+                />
+              </div>
+            </div>
+
+            <hr class="form-divider" />
+
+            <div class="form-section">
+              <h2>Ingressos</h2>
+              <div class="row">
+                <div class="form-group">
+                  <label for="price">Preço (R$)</label>
+                  <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    placeholder="Ex: 25,00"
+                    step="0.01"
+                    min="0"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="ticketPlatform">Plataforma de Venda</label>
+                  <input
+                    type="text"
+                    id="ticketPlatform"
+                    name="ticketPlatform"
+                    placeholder="Ex: Sympla"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <label for="ticketUrl">Link para Ingressos</label>
+                  <input
+                    type="url"
+                    id="ticketUrl"
+                    name="ticketUrl"
+                    placeholder="https://..."
+                  />
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="isFree" name="isFree" />
+                  <label for="isFree">Evento Gratuito</label>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-button">Publicar Evento</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="../js/common.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const isFreeCheckbox = document.getElementById("isFree");
+        const priceInput = document.getElementById("price");
+        const ticketPlatformInput = document.getElementById("ticketPlatform");
+        const ticketUrlInput = document.getElementById("ticketUrl");
+
+        isFreeCheckbox.addEventListener("change", () => {
+          const inputsToDisable = [
+            priceInput,
+            ticketPlatformInput,
+            ticketUrlInput,
+          ];
+          if (isFreeCheckbox.checked) {
+            inputsToDisable.forEach((input) => {
+              input.value = "";
+              input.disabled = true;
+              input.style.backgroundColor = "#e9ecef";
+            });
+          } else {
+            inputsToDisable.forEach((input) => {
+              input.disabled = false;
+              input.style.backgroundColor = "";
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+  </html>
+
+

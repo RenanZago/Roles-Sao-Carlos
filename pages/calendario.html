@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendário Completo - RoleSC</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/calendario.css">
+    <link rel="stylesheet" href="../css/header.css">
+  </head>
+  <body>
+    <header class="main-header" id="main-header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">RoleSC</a>
+        <div class="hamburger-menu" id="hamburger-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <nav class="main-nav" id="main-nav">
+          <ul>
+            <li><a href="index.html">Feed</a></li>
+            <li><a href="calendario.html" class="active">Calendário</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li class="nav-auth-links-mobile" id="nav-auth-links-mobile"></li>
+          </ul>
+        </nav>
+        <nav class="nav-desktop">
+          <ul>
+            <li><a href="index.html">Feed</a></li>
+            <li><a href="calendario.html" class="active">Calendário</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li id="desktop-auth-section"></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container">
+        <h1 class="page-title">Agenda de Eventos</h1>
+        <div id="calendar"></div>
+      </div>
+    </main>
+
+    <div id="event-popover">
+      <h4 id="popover-title"></h4>
+      <p id="popover-time"></p>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/common.js"></script>
+    <script src="../js/calendario.js"></script>
+  </body>
+  </html>
+
+

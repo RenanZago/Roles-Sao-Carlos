@@ -1,0 +1,132 @@
+/* --- PÁGINAS DE AUTENTICAÇÃO (LOGIN E CADASTRO) --- */
+
+body {
+  background-color: var(--cor-fundo-secao);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 450px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* --- Header Simplificado --- */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--cor-bordas);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center; /* Centraliza o logo */
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo destacado no header de auth */
+.logo {
+  font-size: 1.5rem;
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.logo:hover { opacity: 0.9; }
+
+/* --- Conteúdo Principal e Formulário --- */
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px;
+}
+
+.form-container {
+  background-color: var(--cor-fundo);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 32px;
+  color: var(--cor-texto-principal);
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 0.875rem;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  font-weight: 400;
+  color: var(--cor-texto-secundario);
+}
+
+.forgot-password {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.switch-form {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.9rem;
+}
+
+.switch-form a {
+  color: var(--cor-primaria);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.switch-form a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .form-container {
+    padding: 30px;
+  }
+}
+

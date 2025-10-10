@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Evento - RoleSC</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/detalhes.css">
+
+  </head>
+  <body>
+    <header class="main-header" id="main-header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">RoleSC</a>
+        <div class="hamburger-menu" id="hamburger-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <nav class="main-nav" id="main-nav">
+          <ul>
+            <li><a href="index.html">Feed</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li class="nav-auth-links-mobile" id="nav-auth-links-mobile"></li>
+          </ul>
+        </nav>
+        <nav class="nav-desktop">
+          <ul>
+            <li><a href="index.html">Feed</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li id="desktop-auth-section"></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="event-hero" id="event-hero-image"></div>
+
+      <div class="event-content">
+        <div class="details-grid">
+          <div class="event-main-details">
+            <span class="event-category" id="event-category"></span>
+
+            <h1 class="event-title" id="event-title"></h1>
+
+            <div class="event-meta">
+              <span>🗓️ <span id="event-date"></span></span>
+              <span>⏰ <span id="event-time"></span></span>
+              <span>📍 <span id="event-location"></span></span>
+            </div>
+
+            <div class="event-description">
+              <h2>Sobre o Evento</h2>
+              <p id="event-description"></p>
+            </div>
+
+            <a href="#" class="cta-button" id="buy-ticket-button"
+              >Comprar Ingresso</a
+            >
+          </div>
+
+          <div class="event-sidebar">
+            <div class="info-box">
+              <h3>Detalhes</h3>
+              <ul>
+                <li>
+                  <strong>Organizador:</strong>
+                  <span id="event-organizer"></span>
+                </li>
+                <li id="price-info">
+                  <strong>Preço:</strong> <span id="event-price"></span>
+                </li>
+                <li id="ticket-info">
+                  <strong>Ingressos:</strong> <span id="event-tickets"></span>
+                </li>
+                <li>
+                  <strong>Classificação:</strong>
+                  <span id="event-age-rating"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <h2>Localização</h2>
+          <iframe id="event-map" allowfullscreen="" loading="lazy"> </iframe>
+        </div>
+      </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="../js/common.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- DADOS DOS EVENTOS (SIMULAÇÃO) ---
+        const eventos = [
+          {
+            id: 1,
+            title: "Show de Calouros",
+            date: "2025-11-12T19:00:00.000Z",
+            durationHours: 4,
+            organizer: "Centro Acadêmico UFSCar",
+            category: "Cultural",
+            description:
+              "Venha ver os novos talentos da universidade se apresentando no palco. Muita música, dança e diversão garantida para todos.",
+            imageUrl:
+              "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1074&q=80",
+            location: {
+              name: "Centro Acadêmico da UFSCar",
+              latitude: -21.9849,
+              longitude: -47.8819,
+            },
+            price: 0,
+            ticketPlatform: null,
+            ageRating: "Livre",
+          },
+          {
+            id: 2,
+            title: "Festa da Bateria",
+            date: "2025-10-28T22:00:00.000Z",
+            durationHours: 6,
+            organizer: "Bateria UFSCar",
+            category: "Festa",
+            description:
+              "A maior festa universitária do ano! Prepare-se para uma noite inesquecível com a melhor batucada da região. Shows ao vivo, DJs e muita integração.",
+            imageUrl:
+              "https://media.discordapp.net/attachments/991113790450049074/1425942691622949076/Gemini_Generated_Image_d3y4oqd3y4oqd3y4.png?ex=68e96c1e&is=68e81a9e&hm=f7e82bb51bc25e2038a85d00039e36a39231e5b8d61d7f017d486f20ede36419&=&format=webp&quality=lossless&width=1364&height=713",
+            location: {
+              name: "Em frente ao ginásio",
+              latitude: -22.0028,
+              longitude: -47.8931,
+            },
+            price: 25.0,
+            ticketPlatform: "Sympla",
+            ageRating: "Maiores de 18 anos",
+          },
+          {
+            id: 3,
+            title: "Churrasco de Fim de Semestre",
+            date: "2025-10-25T16:00:00.000Z",
+            durationHours: 5,
+            organizer: "Atlética",
+            category: "Festa",
+            description:
+              "Comemore o fim do semestre com a galera! Comidas, bebidas e música ao ar livre em frente ao Centro Acadêmico da UFSCar.",
+            imageUrl:
+              "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80",
+            location: {
+              name: "Em frente ao Centro Acadêmico da UFSCar",
+              latitude: -21.9855,
+              longitude: -47.8823,
+            },
+            price: 0,
+            ticketPlatform: null,
+            ageRating: "Livre",
+          },
+          {
+            id: 4,
+            title: "Intro ao React Native",
+            date: "2025-10-28T14:00:00.000Z",
+            durationHours: 3,
+            organizer: "Departamento de Computação UFSCar",
+            category: "Acadêmico",
+            description:
+              "Workshop introdutório para construir apps móveis com React Native. Traga seu notebook!",
+            imageUrl:
+              "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=800&q=80",
+            location: {
+              name: "Auditório de Tecnologia, UFSCar",
+              latitude: -21.9866,
+              longitude: -47.8805,
+            },
+            price: 0,
+            ticketPlatform: null,
+            ageRating: "Livre",
+          },
+          {
+            id: 5,
+            title: "Campeonato de Futsal",
+            date: "2025-10-29T18:00:00.000Z",
+            durationHours: 4,
+            organizer: "Liga Universitária",
+            category: "Esporte",
+            description:
+              "Times universitários disputam o título no ginásio da UFSCar. Venha torcer!",
+            imageUrl:
+              "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80",
+            location: {
+              name: "Ginásio da UFSCar",
+              latitude: -21.9902,
+              longitude: -47.8809,
+            },
+            price: 0,
+            ticketPlatform: null,
+            ageRating: "Livre",
+          },
+          {
+            id: 6,
+            title: "Mostra de Cinema Universitária",
+            date: "2025-11-05T19:30:00.000Z",
+            durationHours: 3,
+            organizer: "CineCAASO",
+            category: "Cultural",
+            description:
+              "Seleção de curtas produzidos por alunos. Debate com diretores ao final.",
+            imageUrl:
+              "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1100&q=80",
+            location: {
+              name: "Auditório do CAASO",
+              latitude: -22.004,
+              longitude: -47.894,
+            },
+            price: 10.0,
+            ticketPlatform: "Sympla",
+            ageRating: "Livre",
+          },
+          {
+            id: 7,
+            title: "Feira de Ciências e Tecnologia",
+            date: "2025-11-10T09:00:00.000Z",
+            durationHours: 8,
+            organizer: "UFSCar",
+            category: "Acadêmico",
+            description:
+              "Projetos inovadores de alunos e pesquisadores com demonstrações interativas.",
+            imageUrl:
+              "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1100&q=80",
+            location: {
+              name: "Centro de Convenções UFSCar",
+              latitude: -21.9849,
+              longitude: -47.8819,
+            },
+            price: 0,
+            ticketPlatform: null,
+            ageRating: "Livre",
+          },
+          {
+            id: 8,
+            title: "Corrida Universitária 5K",
+            date: "2025-11-15T07:00:00.000Z",
+            durationHours: 2,
+            organizer: "Atlética",
+            category: "Esporte",
+            description:
+              "Percurso de 5 km dentro do campus. Inscrições incluem kit com camiseta.",
+            imageUrl:
+              "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1100&q=80",
+            location: {
+              name: "Pórtico Principal da UFSCar",
+              latitude: -21.9818,
+              longitude: -47.8808,
+            },
+            price: 30.0,
+            ticketPlatform: "Even3",
+            ageRating: "Livre",
+          },
+        ];
+
+        // --- BUSCA POR ID NA URL; FALLBACK ALEATÓRIO ---
+        const params = new URLSearchParams(window.location.search);
+        const idParam = params.get("id");
+        const selected = idParam
+          ? eventos.find((e) => String(e.id) === String(idParam))
+          : null;
+        const eventData = selected || eventos[Math.floor(Math.random() * eventos.length)];
+
+        // --- PREENCHIMENTO DINÂMICO DA PÁGINA ---
+        const startDate = new Date(eventData.date);
+        const endDate = new Date(
+          startDate.getTime() + eventData.durationHours * 60 * 60 * 1000
+        );
+        const dateOptions = {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          timeZone: "America/Sao_Paulo",
+        };
+        const timeOptions = {
+          hour: "2-digit",
+          minute: "2-digit",
+          timeZone: "America/Sao_Paulo",
+        };
+
+        document.getElementById(
+          "event-hero-image"
+        ).style.backgroundImage = `url('${eventData.imageUrl}')`;
+        document.getElementById("event-category").textContent =
+          eventData.category;
+        document.getElementById("event-title").textContent = eventData.title;
+        document.getElementById("event-date").textContent =
+          new Intl.DateTimeFormat("pt-BR", dateOptions).format(startDate);
+        document.getElementById(
+          "event-time"
+        ).textContent = `${startDate.toLocaleTimeString(
+          "pt-BR",
+          timeOptions
+        )} – ${endDate.toLocaleTimeString("pt-BR", timeOptions)}`;
+        document.getElementById("event-location").textContent =
+          eventData.location.name;
+        document.getElementById("event-description").textContent =
+          eventData.description;
+        document.getElementById("event-organizer").textContent =
+          eventData.organizer;
+        document.getElementById("event-age-rating").textContent =
+          eventData.ageRating;
+        document.getElementById(
+          "event-map"
+        ).src = `https://maps.google.com/maps?q=${eventData.location.latitude},${eventData.location.longitude}&hl=pt-BR&z=15&output=embed`;
+
+        const priceInfo = document.getElementById("price-info");
+        const ticketInfo = document.getElementById("ticket-info");
+        const buyTicketButton = document.getElementById("buy-ticket-button");
+
+        if (eventData.price === 0) {
+          priceInfo.innerHTML = "<strong>Preço:</strong> Gratuito";
+          ticketInfo.style.display = "none";
+          buyTicketButton.style.display = "none";
+        } else {
+          document.getElementById(
+            "event-price"
+          ).textContent = `A partir de R$ ${eventData.price
+            .toFixed(2)
+            .replace(".", ",")}`;
+          document.getElementById(
+            "event-tickets"
+          ).textContent = `Online via ${eventData.ticketPlatform}`;
+        }
+      });
+    </script>
+  </body>
+  </html>
+
+

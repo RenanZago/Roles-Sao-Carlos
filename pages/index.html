@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RoleSC</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/header.css">
+  </head>
+  <body>
+    <header class="main-header" id="main-header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">RoleSC</a>
+        <div class="hamburger-menu" id="hamburger-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <nav class="main-nav" id="main-nav">
+          <ul>
+            <li><a href="index.html" class="active">Feed</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li class="nav-auth-links-mobile" id="nav-auth-links-mobile"></li>
+          </ul>
+        </nav>
+        <nav class="nav-desktop">
+          <ul>
+            <li><a href="index.html" class="active">Feed</a></li>
+            <li><a href="calendario.html">Calendário</a></li>
+            <li><a href="mapa.html">Mapa</a></li>
+            <li id="desktop-auth-section"></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="container">
+          <h1>
+            <span id="typing-text"></span><span class="typing-cursor">|</span>
+          </h1>
+          <p>
+            A sua agenda definitiva para eventos universitários, culturais e as
+            melhores festas da cidade.
+          </p>
+          <div class="search-container">
+            <div class="hero-search">
+              <input
+                type="text"
+                placeholder="Busque por um evento, local ou data..."
+              />
+              <button class="hero-button">Buscar</button>
+            </div>
+            <button class="advanced-filter-button" id="open-filter-modal">
+              Filtros Avançados
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div class="main-content">
+        <div class="container">
+          <div class="filter-container-wrapper">
+            <ul class="filter-list">
+              <span class="active-filter-bg"></span>
+              <li>
+                <a href="#" class="active" data-color="var(--cor-primaria)"
+                  >Todos</a
+                >
+              </li>
+              <li><a href="#" data-color="var(--cor-amarelo)">Festas</a></li>
+              <li><a href="#" data-color="var(--cor-azul)">Acadêmico</a></li>
+              <li><a href="#" data-color="var(--cor-rosa)">Cultural</a></li>
+              <li><a href="#" data-color="var(--cor-verde)">Esporte</a></li>
+            </ul>
+          </div>
+          <div class="events-grid">
+            <div class="event-card">
+              <div
+                class="event-card-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80');
+                "
+              ></div>
+              <div class="event-card-body">
+                <span
+                  class="event-tag"
+                  style="background-color: var(--cor-amarelo)"
+                  >Festa</span
+                >
+                <h3>Churrasco de Fim de Semestre</h3>
+                <p class="event-info">
+                  <strong>Sáb, 25 de Outubro</strong> • Em frente ao Centro Acadêmico da UFSCar
+                </p>
+                <a href="detalhes.html?id=3" class="card-button">Ver Detalhes</a>
+              </div>
+            </div>
+            <div class="event-card">
+              <div
+                class="event-card-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=800&q=80');
+                "
+              ></div>
+              <div class="event-card-body">
+                <span
+                  class="event-tag"
+                  style="background-color: var(--cor-azul)"
+                  >Workshop</span
+                >
+                <h3>Intro ao React Native</h3>
+                <p class="event-info">
+                  <strong>Ter, 28 de Outubro</strong> • Auditório de Tecnologia, UFSCar
+                </p>
+                <a href="detalhes.html?id=4" class="card-button">Ver Detalhes</a>
+              </div>
+            </div>
+            <div class="event-card">
+              <div
+                class="event-card-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80');
+                "
+              ></div>
+              <div class="event-card-body">
+                <span
+                  class="event-tag"
+                  style="background-color: var(--cor-verde)"
+                  >Esporte</span
+                >
+                <h3>Campeonato de Futsal</h3>
+                <p class="event-info">
+                  <strong>Qua, 29 de Outubro</strong> • Ginásio da UFSCar
+                </p>
+                <a href="detalhes.html?id=5" class="card-button">Ver Detalhes</a>
+              </div>
+            </div>
+            <div class="event-card">
+              <div
+                class="event-card-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1100&q=80');
+                "
+              ></div>
+              <div class="event-card-body">
+                <span
+                  class="event-tag"
+                  style="background-color: var(--cor-rosa)"
+                  >Cultural</span
+                >
+                <h3>Mostra de Cinema Universitária</h3>
+                <p class="event-info">
+                  <strong>Qua, 5 de Novembro</strong> • Auditório do CAASO
+                </p>
+                <a href="detalhes.html?id=6" class="card-button">Ver Detalhes</a>
+              </div>
+            </div>
+            <div class="event-card">
+              <div
+                class="event-card-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1100&q=80');
+                "
+              ></div>
+              <div class="event-card-body">
+                <span
+                  class="event-tag"
+                  style="background-color: var(--cor-azul)"
+                  >Acadêmico</span
+                >
+                <h3>Feira de Ciências e Tecnologia</h3>
+                <p class="event-info">
+                  <strong>Seg, 10 de Novembro</strong> • Centro de Convenções UFSCar
+                </p>
+                <a href="detalhes.html?id=7" class="card-button">Ver Detalhes</a>
+              </div>
+            </div>
+            <div class="event-card">
+              <div
+                class="event-card-image"
+                style="
+                  background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1100&q=80');
+                "
+              ></div>
+              <div class="event-card-body">
+                <span
+                  class="event-tag"
+                  style="background-color: var(--cor-verde)"
+                  >Esporte</span
+                >
+                <h3>Corrida Universitária 5K</h3>
+                <p class="event-info">
+                  <strong>Sáb, 15 de Novembro</strong> • Pórtico Principal da UFSCar
+                </p>
+                <a href="detalhes.html?id=8" class="card-button">Ver Detalhes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="modal-overlay" id="filter-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Filtros Avançados</h2>
+          <button class="close-modal-button" id="close-filter-modal">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Categoria do Rolê</label>
+            <div class="category-buttons">
+              <a href="#" class="active" data-color="var(--cor-primaria)"
+                >Todos</a
+              >
+              <a href="#" data-color="var(--cor-amarelo)">Festas</a>
+              <a href="#" data-color="var(--cor-azul)">Acadêmico</a>
+              <a href="#" data-color="var(--cor-rosa)">Cultural</a>
+              <a href="#" data-color="var(--cor-verde)">Esporte</a>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date-range">Data</label>
+            <div class="date-inputs">
+              <input type="date" id="start-date" name="start-date" />
+              <span>até</span>
+              <input type="date" id="end-date" name="end-date" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Preço</label>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="price" value="any" checked />
+                Qualquer
+              </label>
+              <label>
+                <input type="radio" name="price" value="free" />
+                Grátis
+              </label>
+              <label>
+                <input type="radio" name="price" value="paid" />
+                Pago
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="location-select">Localização</label>
+            <select id="location-select" name="location">
+              <option value="any">Qualquer lugar</option>
+              <option value="usp1">USP - Área 1</option>
+              <option value="usp2">USP - Área 2</option>
+              <option value="ufscar">UFSCar</option>
+              <option value="centro">Centro da Cidade</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="apply-filters-button">Aplicar Filtros</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../js/common.js"></script>
+    <script src="../js/index.js"></script>
+  </body>
+  </html>
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                            
