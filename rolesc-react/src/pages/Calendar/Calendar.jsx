@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -19,6 +19,8 @@ const CATEGORY_COLORS = {
 const Calendar = () => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [popover, setPopover] = useState({ visible: false, title: '', time: '', color: '', top: 0, left: 0 });
+    const popoverRef = useRef(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -48,6 +50,40 @@ const Calendar = () => {
         if (info.event.url) {
             navigate(info.event.url);
         }
+    };
+
+    const handleEventMouseEnter = (info) => {
+        const eventRect = info.el.getBoundingClientRect();
+        const popoverHeight = 60; // approximate height
+        const popoverWidth = 180; // approximate width
+
+        let top = eventRect.top + window.scrollY - popoverHeight - 10;
+        if (top < window.scrollY) {
+            top = eventRect.bottom + window.scrollY + 10;
+        }
+
+        let left = eventRect.left + window.scrollX + (eventRect.width / 2) - (popoverWidth / 2);
+        if (left < 10) left = 10;
+        if (left + popoverWidth > window.innerWidth - 10) {
+            left = window.innerWidth - popoverWidth - 10;
+        }
+
+        const timeStr = info.event.allDay
+            ? 'O dia todo'
+            : info.event.start.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+        setPopover({
+            visible: true,
+            title: info.event.title,
+            time: timeStr,
+            color: info.event.backgroundColor || 'var(--cor-primaria)',
+            top,
+            left,
+        });
+    };
+
+    const handleEventMouseLeave = () => {
+        setPopover(prev => ({ ...prev, visible: false }));
     };
 
     return (
@@ -88,11 +124,24 @@ const Calendar = () => {
                                 }}
                                 events={events}
                                 eventClick={handleEventClick}
+                                eventMouseEnter={handleEventMouseEnter}
+                                eventMouseLeave={handleEventMouseLeave}
                             />
                         </div>
                     )}
                 </div>
             </main>
+
+            {/* Event Popover */}
+            <div
+                ref={popoverRef}
+                id="event-popover"
+                className={popover.visible ? 'visible' : ''}
+                style={{ top: popover.top, left: popover.left }}
+            >
+                <h4 id="popover-title" style={{ color: popover.color }}>{popover.title}</h4>
+                <p id="popover-time">{popover.time}</p>
+            </div>
         </>
     );
 };
