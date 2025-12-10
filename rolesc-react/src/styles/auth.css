@@ -16,6 +16,12 @@
     padding: 40px 20px;
 }
 
+.auth-main .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .form-container {
     background-color: var(--cor-fundo);
     padding: 40px;

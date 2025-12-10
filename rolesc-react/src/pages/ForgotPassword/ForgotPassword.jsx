@@ -27,7 +27,7 @@ const ForgotPassword = () => {
                 </div>
             </header>
 
-            <main className="auth-main main-content">
+            <main className="auth-main">
                 <div className="container">
                     <div className="form-container">
                         <h1 className="page-title">Esqueci minha senha</h1>
