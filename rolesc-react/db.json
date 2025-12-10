@@ -1,0 +1,156 @@
+{
+    "events": [
+        {
+            "id": 1,
+            "title": "Show de Calouros",
+            "date": "2025-11-12T19:00:00.000Z",
+            "durationHours": 4,
+            "organizer": "Centro Acadêmico UFSCar",
+            "category": "Cultural",
+            "description": "Venha ver os novos talentos da universidade se apresentando no palco. Muita música, dança e diversão garantida para todos.",
+            "imageUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1074&q=80",
+            "location": {
+                "name": "Centro Acadêmico da UFSCar",
+                "latitude": -21.9849,
+                "longitude": -47.8819
+            },
+            "price": 0,
+            "ticketPlatform": null,
+            "ageRating": "Livre"
+        },
+        {
+            "id": 2,
+            "title": "Festa da Bateria",
+            "date": "2025-10-28T22:00:00.000Z",
+            "durationHours": 6,
+            "organizer": "Bateria UFSCar",
+            "category": "Festa",
+            "description": "A maior festa universitária do ano! Prepare-se para uma noite inesquecível com a melhor batucada da região. Shows ao vivo, DJs e muita integração.",
+            "imageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+            "location": {
+                "name": "Em frente ao ginásio",
+                "latitude": -22.0028,
+                "longitude": -47.8931
+            },
+            "price": 25.0,
+            "ticketPlatform": "Sympla",
+            "ageRating": "Maiores de 18 anos"
+        },
+        {
+            "id": 3,
+            "title": "Churrasco de Fim de Semestre",
+            "date": "2025-10-25T16:00:00.000Z",
+            "durationHours": 5,
+            "organizer": "Atlética",
+            "category": "Festa",
+            "description": "Comemore o fim do semestre com a galera! Comidas, bebidas e música ao ar livre em frente ao Centro Acadêmico da UFSCar.",
+            "imageUrl": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80",
+            "location": {
+                "name": "Em frente ao Centro Acadêmico da UFSCar",
+                "latitude": -21.9855,
+                "longitude": -47.8823
+            },
+            "price": 0,
+            "ticketPlatform": null,
+            "ageRating": "Livre"
+        },
+        {
+            "id": 4,
+            "title": "Intro ao React Native",
+            "date": "2025-10-28T14:00:00.000Z",
+            "durationHours": 3,
+            "organizer": "Departamento de Computação UFSCar",
+            "category": "Acadêmico",
+            "description": "Workshop introdutório para construir apps móveis com React Native. Traga seu notebook!",
+            "imageUrl": "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=800&q=80",
+            "location": {
+                "name": "Auditório de Tecnologia, UFSCar",
+                "latitude": -21.9866,
+                "longitude": -47.8805
+            },
+            "price": 0,
+            "ticketPlatform": null,
+            "ageRating": "Livre"
+        },
+        {
+            "id": 5,
+            "title": "Campeonato de Futsal",
+            "date": "2025-10-29T18:00:00.000Z",
+            "durationHours": 4,
+            "organizer": "Liga Universitária",
+            "category": "Esporte",
+            "description": "Times universitários disputam o título no ginásio da UFSCar. Venha torcer!",
+            "imageUrl": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80",
+            "location": {
+                "name": "Ginásio da UFSCar",
+                "latitude": -21.9902,
+                "longitude": -47.8809
+            },
+            "price": 0,
+            "ticketPlatform": null,
+            "ageRating": "Livre"
+        },
+        {
+            "id": 6,
+            "title": "Mostra de Cinema Universitária",
+            "date": "2025-11-05T19:30:00.000Z",
+            "durationHours": 3,
+            "organizer": "CineCAASO",
+            "category": "Cultural",
+            "description": "Seleção de curtas produzidos por alunos. Debate com diretores ao final.",
+            "imageUrl": "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1100&q=80",
+            "location": {
+                "name": "Auditório do CAASO",
+                "latitude": -22.004,
+                "longitude": -47.894
+            },
+            "price": 10.0,
+            "ticketPlatform": "Sympla",
+            "ageRating": "Livre"
+        },
+        {
+            "id": 7,
+            "title": "Feira de Ciências e Tecnologia",
+            "date": "2025-11-10T09:00:00.000Z",
+            "durationHours": 8,
+            "organizer": "UFSCar",
+            "category": "Acadêmico",
+            "description": "Projetos inovadores de alunos e pesquisadores com demonstrações interativas.",
+            "imageUrl": "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1100&q=80",
+            "location": {
+                "name": "Centro de Convenções UFSCar",
+                "latitude": -21.9849,
+                "longitude": -47.8819
+            },
+            "price": 0,
+            "ticketPlatform": null,
+            "ageRating": "Livre"
+        },
+        {
+            "id": 8,
+            "title": "Corrida Universitária 5K",
+            "date": "2025-11-15T07:00:00.000Z",
+            "durationHours": 2,
+            "organizer": "Atlética",
+            "category": "Esporte",
+            "description": "Percurso de 5 km dentro do campus. Inscrições incluem kit com camiseta.",
+            "imageUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1100&q=80",
+            "location": {
+                "name": "Pórtico Principal da UFSCar",
+                "latitude": -21.9818,
+                "longitude": -47.8808
+            },
+            "price": 30.0,
+            "ticketPlatform": "Even3",
+            "ageRating": "Livre"
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "name": "Usuário Teste",
+            "email": "teste@email.com",
+            "password": "123456"
+        }
+    ]
+}
