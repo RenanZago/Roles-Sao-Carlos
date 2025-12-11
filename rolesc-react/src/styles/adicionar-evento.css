@@ -1,4 +1,3 @@
-/* --- ADD EVENT PAGE --- */
 .add-event-main {
     padding-top: calc(var(--header-height) + 30px);
     min-height: 100vh;
@@ -50,7 +49,6 @@ select {
     }
 }
 
-/* --- ADD EVENT MOBILE RESPONSIVENESS --- */
 @media (max-width: 480px) {
     .add-event-main {
         padding-top: calc(var(--header-height) + 15px);

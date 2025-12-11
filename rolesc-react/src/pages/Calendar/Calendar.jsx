@@ -54,8 +54,8 @@ const Calendar = () => {
 
     const handleEventMouseEnter = (info) => {
         const eventRect = info.el.getBoundingClientRect();
-        const popoverHeight = 60; // approximate height
-        const popoverWidth = 180; // approximate width
+        const popoverHeight = 60;
+        const popoverWidth = 180;
 
         let top = eventRect.top + window.scrollY - popoverHeight - 10;
         if (top < window.scrollY) {
@@ -132,7 +132,7 @@ const Calendar = () => {
                 </div>
             </main>
 
-            {/* Event Popover */}
+
             <div
                 ref={popoverRef}
                 id="event-popover"

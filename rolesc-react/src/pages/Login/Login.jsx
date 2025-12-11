@@ -23,7 +23,7 @@ const Login = () => {
             const result = await loginUser(email, password);
 
             if (result.success) {
-                login(result.user); // R6 - Saves to localStorage via AuthContext
+                login(result.user);
                 navigate('/');
             } else {
                 setError(result.message);

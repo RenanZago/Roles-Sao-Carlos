@@ -6,7 +6,6 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    // Carregar usuário do localStorage ao iniciar (R6 - localStorage API)
     useEffect(() => {
         const storedUser = localStorage.getItem('rolesc_user');
         if (storedUser) {

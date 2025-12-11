@@ -33,7 +33,6 @@ const Register = () => {
         setLoading(true);
 
         try {
-            // Check if email already exists
             const users = await getUsers();
             if (users.some(u => u.email === email)) {
                 setError('Este email já está cadastrado.');
@@ -41,7 +40,6 @@ const Register = () => {
                 return;
             }
 
-            // Register new user
             await registerUser({ name, email, password });
 
             setSuccess('Cadastro realizado com sucesso! Redirecionando...');

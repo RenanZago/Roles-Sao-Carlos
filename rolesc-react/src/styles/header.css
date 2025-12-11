@@ -1,4 +1,3 @@
-/* --- HEADER (MOBILE FIRST) --- */
 .main-header {
     position: fixed;
     top: 0;
@@ -30,7 +29,6 @@
     text-decoration: none;
 }
 
-/* --- HAMBURGER MENU (MOBILE) --- */
 .hamburger-menu {
     display: flex;
     flex-direction: column;
@@ -61,7 +59,6 @@
     transform: rotate(-45deg) translate(6px, -7px);
 }
 
-/* --- NAVEGAÇÃO MOBILE --- */
 .main-nav {
     position: fixed;
     top: 0;
@@ -100,12 +97,10 @@
     color: var(--cor-primaria);
 }
 
-/* --- NAVEGAÇÃO DESKTOP (ESCONDIDA NO MOBILE) --- */
 .nav-desktop {
     display: none;
 }
 
-/* --- AUTH LINKS --- */
 .nav-auth-links-mobile a {
     display: block;
     padding: 8px 0;
@@ -127,7 +122,6 @@
     text-decoration: none;
 }
 
-/* --- AUTH DROPDOWN (DESKTOP) --- */
 .auth-dropdown {
     position: relative;
 }
@@ -165,7 +159,6 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
     z-index: -1;
-    /* Ensure the pseudo-element is behind the content */
 }
 
 .auth-dropdown:hover .auth-dropdown-content,
@@ -186,7 +179,6 @@
     color: var(--cor-primaria);
 }
 
-/* --- TABLET / DESKTOP --- */
 @media (min-width: 768px) {
     .hamburger-menu {
         display: none;

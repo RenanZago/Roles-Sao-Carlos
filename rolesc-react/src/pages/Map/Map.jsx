@@ -9,7 +9,6 @@ import 'leaflet/dist/leaflet.css';
 import '../../styles/base.css';
 import '../../styles/mapa.css';
 
-// Fix for default marker icons in Leaflet with React
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
@@ -49,7 +48,6 @@ const CATEGORY_CSS_COLORS = {
     'Esporte': 'var(--cor-verde)',
 };
 
-// Component to handle map centering on user location
 const LocationMarker = ({ position, shouldFlyTo }) => {
     const map = useMap();
 
@@ -76,7 +74,6 @@ const LocationMarker = ({ position, shouldFlyTo }) => {
     );
 };
 
-// Button component to locate user
 const LocateButton = ({ onClick, disabled }) => {
     return (
         <button
@@ -93,7 +90,7 @@ const LocateButton = ({ onClick, disabled }) => {
 const Map = () => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [flyToUser, setFlyToUser] = useState(0); // R6 - Geolocation API
+    const [flyToUser, setFlyToUser] = useState(0);
     const { latitude, longitude, loading: geoLoading } = useGeolocation();
 
     const saoCarlosCenter = [-22.0177, -47.8913];
@@ -101,7 +98,7 @@ const Map = () => {
 
     const handleLocateClick = () => {
         if (userPosition) {
-            setFlyToUser(prev => prev + 1); // Incrementa para disparar o useEffect
+            setFlyToUser(prev => prev + 1);
         } else {
             alert('Não foi possível obter sua localização. Verifique se a permissão de localização está ativada.');
         }
@@ -152,10 +149,8 @@ const Map = () => {
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
 
-                            {/* User location marker (R6 - Geolocation) */}
                             {!geoLoading && <LocationMarker position={userPosition} shouldFlyTo={flyToUser} />}
 
-                            {/* Event markers */}
                             {events.map(event => (
                                 <Marker
                                     key={event.id}

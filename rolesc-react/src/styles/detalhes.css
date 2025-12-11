@@ -1,4 +1,3 @@
-/* --- DETALHES PAGE --- */
 .event-hero {
     height: 300px;
     background-size: cover;
@@ -81,7 +80,6 @@
     background-color: #d65645;
 }
 
-/* --- INFO BOX (SIDEBAR) --- */
 .info-box {
     background-color: var(--cor-fundo-secao);
     padding: 24px;
@@ -111,7 +109,6 @@
     color: var(--cor-texto-principal);
 }
 
-/* --- MAP CONTAINER --- */
 .map-container {
     margin-top: 40px;
 }
@@ -128,7 +125,6 @@
     border-radius: 12px;
 }
 
-/* --- TABLET / DESKTOP --- */
 @media (min-width: 768px) {
     .event-hero {
         height: 400px;

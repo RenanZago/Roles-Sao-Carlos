@@ -26,7 +26,7 @@ const AddEvent = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // Redirect if not logged in
+
     if (!isLoggedIn) {
         return (
             <>
@@ -65,7 +65,7 @@ const AddEvent = () => {
         setLoading(true);
 
         try {
-            // Geocode the address to get coordinates
+
             let coordinates = {
                 latitude: -22.0177,
                 longitude: -47.8913
@@ -85,7 +85,7 @@ const AddEvent = () => {
                 }
             }
 
-            // Build event object
+
             const eventData = {
                 title: formData.title,
                 description: formData.description,

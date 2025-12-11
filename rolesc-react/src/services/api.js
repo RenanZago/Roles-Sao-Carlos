@@ -9,7 +9,6 @@ const api = axios.create({
     },
 });
 
-// Events API
 export const getEvents = async () => {
     const response = await api.get('/events');
     return response.data;
@@ -25,7 +24,6 @@ export const createEvent = async (eventData) => {
     return response.data;
 };
 
-// Users API
 export const getUsers = async () => {
     const response = await api.get('/users');
     return response.data;
@@ -45,7 +43,6 @@ export const loginUser = async (email, password) => {
     return { success: false, message: 'Email ou senha inválidos' };
 };
 
-// Geocoding API (Nominatim - OpenStreetMap)
 export const geocodeAddress = async (address) => {
     try {
         const encodedAddress = encodeURIComponent(address + ', São Carlos, SP, Brasil');

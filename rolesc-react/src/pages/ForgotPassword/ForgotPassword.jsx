@@ -12,7 +12,6 @@ const ForgotPassword = () => {
         e.preventDefault();
         setLoading(true);
 
-        // Simulated password recovery
         setTimeout(() => {
             setSuccess('Se o email existir em nossa base, você receberá instruções para redefinir sua senha.');
             setLoading(false);

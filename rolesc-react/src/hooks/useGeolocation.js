@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// Hook customizado para geolocalização (R6 - Geolocation API)
 export const useGeolocation = () => {
     const [location, setLocation] = useState({
         latitude: null,

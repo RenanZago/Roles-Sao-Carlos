@@ -42,7 +42,6 @@ const Header = () => {
                     <span className="bar"></span>
                 </div>
 
-                {/* Mobile Navigation */}
                 <nav className={`main-nav ${isMenuOpen ? 'active' : ''}`}>
                     <ul>
                         <li>
@@ -88,7 +87,6 @@ const Header = () => {
                     </ul>
                 </nav>
 
-                {/* Desktop Navigation */}
                 <nav className="nav-desktop">
                     <ul>
                         <li>

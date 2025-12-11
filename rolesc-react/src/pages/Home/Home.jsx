@@ -17,12 +17,12 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Advanced filters state
+
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [priceFilter, setPriceFilter] = useState('any');
 
-    // Fetch events from API (R5)
+
     useEffect(() => {
         const fetchEvents = async () => {
             try {
@@ -41,16 +41,16 @@ const Home = () => {
         fetchEvents();
     }, []);
 
-    // Apply all filters
+
     const applyFilters = () => {
         let result = events;
 
-        // Category filter
+
         if (activeFilter) {
             result = result.filter(event => event.category === activeFilter);
         }
 
-        // Search term filter
+
         if (searchTerm) {
             const term = searchTerm.toLowerCase();
             result = result.filter(event =>
@@ -60,7 +60,7 @@ const Home = () => {
             );
         }
 
-        // Date filter
+
         if (startDate) {
             const start = new Date(startDate);
             start.setHours(0, 0, 0, 0);
@@ -73,7 +73,7 @@ const Home = () => {
             result = result.filter(event => new Date(event.date) <= end);
         }
 
-        // Price filter
+
         if (priceFilter === 'free') {
             result = result.filter(event => event.price === 0);
         } else if (priceFilter === 'paid') {
@@ -83,7 +83,7 @@ const Home = () => {
         setFilteredEvents(result);
     };
 
-    // Apply filters when dependencies change
+
     useEffect(() => {
         applyFilters();
     }, [activeFilter, searchTerm, events, startDate, endDate, priceFilter]);
