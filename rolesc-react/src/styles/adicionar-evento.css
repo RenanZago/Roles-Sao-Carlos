@@ -49,3 +49,60 @@ select {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* --- ADD EVENT MOBILE RESPONSIVENESS --- */
+@media (max-width: 480px) {
+    .add-event-main {
+        padding-top: calc(var(--header-height) + 15px);
+    }
+
+    .add-event-main .container {
+        padding: 0 10px;
+    }
+
+    .add-event-main .form-container {
+        padding: 20px 15px;
+    }
+
+    .add-event-main .page-title {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    .form-section h2 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .form-section {
+        margin-bottom: 20px;
+    }
+
+    .form-divider {
+        margin: 20px 0;
+    }
+
+    .form-group label {
+        font-size: 0.85rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    textarea {
+        min-height: 100px;
+    }
+
+    .submit-button {
+        padding: 14px;
+        font-size: 0.95rem;
+    }
+
+    .checkbox-group {
+        font-size: 0.85rem;
+    }
+}

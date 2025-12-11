@@ -309,10 +309,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .date-inputs input {
     flex: 1;
+    min-width: 100px;
     padding: 10px;
     border: 1px solid var(--cor-bordas);
     border-radius: 8px;
@@ -326,6 +328,7 @@
 .radio-group {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .radio-group label {
@@ -334,6 +337,48 @@
     gap: 6px;
     font-weight: normal;
     font-size: 0.9rem;
+}
+
+/* --- MODAL MOBILE --- */
+@media (max-width: 480px) {
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+
+    .modal-header {
+        padding: 15px;
+    }
+
+    .modal-body {
+        padding: 15px;
+    }
+
+    .date-inputs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .date-inputs input {
+        width: 100%;
+    }
+
+    .date-inputs span {
+        text-align: center;
+    }
+
+    .modal-footer {
+        padding: 15px;
+    }
+
+    .filter-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .filter-buttons button {
+        width: 100%;
+    }
 }
 
 /* --- TABLET --- */
