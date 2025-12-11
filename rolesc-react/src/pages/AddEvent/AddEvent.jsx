@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createEvent } from '../../services/api';
+import { createEvent, geocodeAddress } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import Header from '../../components/Header/Header';
 import '../../styles/base.css';
@@ -18,6 +18,7 @@ const AddEvent = () => {
         category: '',
         imageUrl: '',
         locationName: '',
+        address: '',
         price: '',
         ticketPlatform: '',
         isFree: false,
@@ -64,6 +65,26 @@ const AddEvent = () => {
         setLoading(true);
 
         try {
+            // Geocode the address to get coordinates
+            let coordinates = {
+                latitude: -22.0177,
+                longitude: -47.8913
+            };
+
+            if (formData.address) {
+                const geoResult = await geocodeAddress(formData.address);
+                if (geoResult.success) {
+                    coordinates = {
+                        latitude: geoResult.latitude,
+                        longitude: geoResult.longitude
+                    };
+                } else {
+                    setError('Não foi possível encontrar o endereço. Verifique e tente novamente.');
+                    setLoading(false);
+                    return;
+                }
+            }
+
             // Build event object
             const eventData = {
                 title: formData.title,
@@ -75,8 +96,9 @@ const AddEvent = () => {
                 organizer: 'Usuário',
                 location: {
                     name: formData.locationName,
-                    latitude: -22.0177 + (Math.random() - 0.5) * 0.02,
-                    longitude: -47.8913 + (Math.random() - 0.5) * 0.02,
+                    address: formData.address,
+                    latitude: coordinates.latitude,
+                    longitude: coordinates.longitude,
                 },
                 price: formData.isFree ? 0 : parseFloat(formData.price) || 0,
                 ticketPlatform: formData.isFree ? null : formData.ticketPlatform || null,
@@ -203,8 +225,20 @@ const AddEvent = () => {
                                         type="text"
                                         id="locationName"
                                         name="locationName"
-                                        placeholder="Ex: Em frente ao ginásio"
+                                        placeholder="Ex: Ginásio de Esportes da USP"
                                         value={formData.locationName}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="address">Endereço Completo</label>
+                                    <input
+                                        type="text"
+                                        id="address"
+                                        name="address"
+                                        placeholder="Ex: Av. Trabalhador São-carlense, 400 - Centro"
+                                        value={formData.address}
                                         onChange={handleChange}
                                         required
                                     />

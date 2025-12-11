@@ -4,6 +4,45 @@
     min-height: 100vh;
 }
 
+.map-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.map-header .page-title {
+    margin-bottom: 0;
+}
+
+.locate-btn {
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.locate-btn:hover:not(:disabled) {
+    background-color: #d65645;
+    transform: translateY(-2px);
+}
+
+.locate-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 #map {
     height: calc(100vh - var(--header-height) - 120px);
     min-height: 400px;

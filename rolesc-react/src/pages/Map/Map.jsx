@@ -50,14 +50,14 @@ const CATEGORY_CSS_COLORS = {
 };
 
 // Component to handle map centering on user location
-const LocationMarker = ({ position }) => {
+const LocationMarker = ({ position, shouldFlyTo }) => {
     const map = useMap();
 
     useEffect(() => {
-        if (position) {
-            map.flyTo(position, 15);
+        if (position && shouldFlyTo) {
+            map.flyTo(position, 16);
         }
-    }, [position, map]);
+    }, [position, map, shouldFlyTo]);
 
     if (!position) return null;
 
@@ -76,13 +76,36 @@ const LocationMarker = ({ position }) => {
     );
 };
 
+// Button component to locate user
+const LocateButton = ({ onClick, disabled }) => {
+    return (
+        <button
+            className="locate-btn"
+            onClick={onClick}
+            disabled={disabled}
+            title="Ir para minha localização"
+        >
+            📍 Minha Localização
+        </button>
+    );
+};
+
 const Map = () => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { latitude, longitude, loading: geoLoading } = useGeolocation(); // R6 - Geolocation API
+    const [flyToUser, setFlyToUser] = useState(0); // R6 - Geolocation API
+    const { latitude, longitude, loading: geoLoading } = useGeolocation();
 
     const saoCarlosCenter = [-22.0177, -47.8913];
     const userPosition = latitude && longitude ? [latitude, longitude] : null;
+
+    const handleLocateClick = () => {
+        if (userPosition) {
+            setFlyToUser(prev => prev + 1); // Incrementa para disparar o useEffect
+        } else {
+            alert('Não foi possível obter sua localização. Verifique se a permissão de localização está ativada.');
+        }
+    };
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -105,7 +128,13 @@ const Map = () => {
 
             <main className="map-main main-content">
                 <div className="container">
-                    <h1 className="page-title">Mapa de Eventos</h1>
+                    <div className="map-header">
+                        <h1 className="page-title">Mapa de Eventos</h1>
+                        <LocateButton
+                            onClick={handleLocateClick}
+                            disabled={geoLoading || !userPosition}
+                        />
+                    </div>
 
                     {loading ? (
                         <p style={{ textAlign: 'center', padding: '40px' }}>
@@ -124,7 +153,7 @@ const Map = () => {
                             />
 
                             {/* User location marker (R6 - Geolocation) */}
-                            {!geoLoading && <LocationMarker position={userPosition} />}
+                            {!geoLoading && <LocationMarker position={userPosition} shouldFlyTo={flyToUser} />}
 
                             {/* Event markers */}
                             {events.map(event => (
