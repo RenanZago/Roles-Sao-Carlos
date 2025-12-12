@@ -204,25 +204,32 @@ const Home = () => {
                 <div className="form-group">
                     <label>Categoria do Rolê</label>
                     <div className="category-buttons">
-                        {['Todos', 'Festas', 'Acadêmico', 'Cultural', 'Esporte'].map(cat => (
-                            <a
-                                key={cat}
-                                href="#"
-                                className={
-                                    (cat === 'Todos' && !activeFilter) ||
-                                        (cat === 'Festas' && activeFilter === 'Festa') ||
-                                        (activeFilter === cat)
-                                        ? 'active'
-                                        : ''
-                                }
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    handleFilterChange(cat === 'Todos' ? null : (cat === 'Festas' ? 'Festa' : cat));
-                                }}
-                            >
-                                {cat}
-                            </a>
-                        ))}
+                        {[
+                            { name: 'Todos', color: 'var(--cor-primaria)' },
+                            { name: 'Festas', color: 'var(--cor-amarelo)', category: 'Festa' },
+                            { name: 'Acadêmico', color: 'var(--cor-azul)' },
+                            { name: 'Cultural', color: 'var(--cor-rosa)' },
+                            { name: 'Esporte', color: 'var(--cor-verde)' },
+                        ].map(cat => {
+                            const isActive =
+                                (cat.name === 'Todos' && !activeFilter) ||
+                                (cat.category === activeFilter) ||
+                                (activeFilter === cat.name);
+                            return (
+                                <a
+                                    key={cat.name}
+                                    href="#"
+                                    className={isActive ? 'active' : ''}
+                                    style={isActive ? { backgroundColor: cat.color } : {}}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleFilterChange(cat.name === 'Todos' ? null : (cat.category || cat.name));
+                                    }}
+                                >
+                                    {cat.name}
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
 

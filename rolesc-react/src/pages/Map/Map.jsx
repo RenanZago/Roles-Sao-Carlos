@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker, useMap } from 'react-leaflet';
 import L from 'leaflet';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 import { getEvents } from '../../services/api';
 import { useGeolocation } from '../../hooks/useGeolocation';
 import Header from '../../components/Header/Header';
@@ -82,7 +83,7 @@ const LocateButton = ({ onClick, disabled }) => {
             disabled={disabled}
             title="Ir para minha localização"
         >
-            📍 Minha Localização
+            <FaMapMarkerAlt /> Minha Localização
         </button>
     );
 };

@@ -50,6 +50,12 @@
     margin-bottom: 30px;
 }
 
+.event-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .event-description {
     margin-bottom: 30px;
 }

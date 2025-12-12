@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { FaCalendarAlt, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 import { getEventById } from '../../services/api';
 import Header from '../../components/Header/Header';
 import '../../styles/base.css';
@@ -111,9 +112,9 @@ const EventDetails = () => {
                             <h1 className="event-title">{event.title}</h1>
 
                             <div className="event-meta">
-                                <span>🗓️ {formatDate(startDate)}</span>
-                                <span>⏰ {formatTime(startDate)} – {formatTime(endDate)}</span>
-                                <span>📍 {event.location.name}</span>
+                                <span><FaCalendarAlt /> {formatDate(startDate)}</span>
+                                <span><FaClock /> {formatTime(startDate)} – {formatTime(endDate)}</span>
+                                <span><FaMapMarkerAlt /> {event.location.name}</span>
                             </div>
 
                             <div className="event-description">

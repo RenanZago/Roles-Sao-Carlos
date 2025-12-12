@@ -82,5 +82,5 @@
 }
 
 .leaflet-control-locate a::before {
-    content: "📍";
+    content: "\2316";
 }

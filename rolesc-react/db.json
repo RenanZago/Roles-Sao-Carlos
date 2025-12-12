@@ -199,6 +199,25 @@
       "price": 0,
       "ticketPlatform": null,
       "ageRating": "Livre"
+    },
+    {
+      "id": "5987",
+      "title": "tesrte",
+      "description": "teste",
+      "date": "2025-12-13T12:00:00.000Z",
+      "durationHours": 12,
+      "category": "Academico",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0hJHODalyRAGni2RBvlY1BQx4LTy3jRzJ9Q&s",
+      "organizer": "Usuário",
+      "location": {
+        "name": "DC Ufscar",
+        "address": "R. Bernardino Fernandes Nunes, 1283 - Cidade Jardim, São Carlos - SP, 13566-490",
+        "latitude": -21.9891358,
+        "longitude": -47.893494
+      },
+      "price": 0,
+      "ticketPlatform": null,
+      "ageRating": "Livre"
     }
   ],
   "users": [
@@ -212,6 +231,12 @@
       "id": "e614",
       "name": "Felipe Kenji",
       "email": "teste@teste.com",
+      "password": "aaaaaa"
+    },
+    {
+      "id": "eb2b",
+      "name": "teste",
+      "email": "email@email.com",
       "password": "aaaaaa"
     }
   ]
